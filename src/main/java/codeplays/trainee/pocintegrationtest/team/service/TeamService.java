@@ -4,6 +4,8 @@ import codeplays.trainee.pocintegrationtest.team.model.Team;
 import codeplays.trainee.pocintegrationtest.team.repository.TeamRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TeamService {
 
@@ -22,5 +24,9 @@ public class TeamService {
         return this.teamRepository
                 .findById(id)
                 .orElseThrow(() -> new Exception("Team not found"));
+    }
+
+    public List<Team> findTeamsByName(String name) {
+        return this.teamRepository.findTeamsByName(name);
     }
 }

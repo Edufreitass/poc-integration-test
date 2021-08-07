@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 
 @RestController
 public class TeamController {
@@ -36,5 +37,11 @@ public class TeamController {
     @ResponseStatus(HttpStatus.OK)
     public Team findById(@PathVariable Long id) throws Exception {
         return teamService.findById(id);
+    }
+
+    @GetMapping("teams")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Team> findTeamByName(@RequestParam("name") String name) {
+        return teamService.findTeamsByName(name);
     }
 }
